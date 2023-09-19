@@ -7,8 +7,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var dir = Input.get_vector("left","right","up","down") * delta * 200
+func _process(_delta):
+	var dir = Input.get_vector("left","right","up","down")
 	velocity = dir * 200
 	move_and_slide()
 	

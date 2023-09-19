@@ -1,18 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://cy1lerdb6ikne"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_obven"]
-[ext_resource type="Texture2D" uid="uid://do18v03g1kwti" path="res://icon.svg" id="1_wdaka"]
-[ext_resource type="Script" path="res://scenes/logo.gd" id="2_3vsxm"]
 [ext_resource type="PackedScene" uid="uid://dvjy67kd3h3gv" path="res://scenes/player/player.tscn" id="2_5285a"]
+[ext_resource type="PackedScene" uid="uid://cittx1c5bwv3v" path="res://scenes/objects/toilet.tscn" id="3_nigky"]
 [ext_resource type="PackedScene" uid="uid://c2e0xavjp1cay" path="res://scenes/objects/bed.tscn" id="5_0v1m5"]
+[ext_resource type="PackedScene" uid="uid://bia6btd7y0raa" path="res://scenes/enemy/drone.tscn" id="5_54aex"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_obven")
 
 [node name="Bed" parent="." instance=ExtResource("5_0v1m5")]
 
-[node name="logo" type="Sprite2D" parent="."]
-texture = ExtResource("1_wdaka")
-script = ExtResource("2_3vsxm")
+[node name="toilet" parent="." instance=ExtResource("3_nigky")]
+position = Vector2(1074, 571)
+rotation = 1.5708
 
 [node name="player" parent="." instance=ExtResource("2_5285a")]
+
+[node name="drone" parent="." instance=ExtResource("5_54aex")]
+position = Vector2(98, 383)

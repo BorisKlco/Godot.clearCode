@@ -4,7 +4,6 @@ var screen:Vector2 = DisplayServer.window_get_size()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$logo.position = Vector2(screen.x/24, screen.y/12)
 	$player.position = Vector2(screen.x/2, screen.y/2)
 	
 
