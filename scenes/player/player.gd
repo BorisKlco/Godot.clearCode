@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal laserAction
+var canLaser: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,9 +11,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var dir = Input.get_vector("left","right","up","down")
-	velocity = dir * 200
+	velocity = dir * 400
 	move_and_slide()
 	
-	if Input.is_action_pressed("action"):
-		print('Pog')
+	if Input.is_action_pressed("action") and canLaser:
+		laserAction.emit()
+		canLaser = false
+		$Timer.start()
 #	print(DisplayServer.mouse_get_position())
+
+
+func _on_timer_timeout():
+	canLaser = true

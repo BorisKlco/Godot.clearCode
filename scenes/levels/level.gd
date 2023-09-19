@@ -8,9 +8,14 @@ func _ready():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
-func _on_entrance_area_body_entered(body):
-	print('entered')
+
+func _on_gate_player_gate_enter():
+	print("enter from Level Scene")
+
+
+func _on_player_laser_action():
+	print('shot from level')

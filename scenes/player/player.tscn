@@ -17,3 +17,9 @@ texture = ExtResource("1_6aj3h")
 position = Vector2(4.76837e-07, 30)
 rotation = 0.120428
 shape = SubResource("CircleShape2D_j55kv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
