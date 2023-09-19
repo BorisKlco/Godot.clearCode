@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,7 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += Input.get_vector("left","right","up","down") * delta * 200
+	var dir = Input.get_vector("left","right","up","down") * delta * 200
+	velocity = dir * 200
+	move_and_slide()
 	
 	if Input.is_action_pressed("action"):
 		print('Pog')
