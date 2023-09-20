@@ -10,6 +10,9 @@ script = ExtResource("1_obven")
 [node name="gate" parent="." instance=ExtResource("2_q8ldo")]
 
 [node name="player" parent="." instance=ExtResource("2_5285a")]
+position = Vector2(962, 535)
+
+[node name="projectiles" type="Node2D" parent="."]
 
 [connection signal="playerGateEnter" from="gate" to="." method="_on_gate_player_gate_enter"]
 [connection signal="laserAction" from="player" to="." method="_on_player_laser_action"]
