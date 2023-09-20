@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal laserAction(pos)
+signal laserAction(pos,dir)
 var canLaser: bool = true
 
 # Called when the node enters the scene tree for the first time.
@@ -14,10 +14,13 @@ func _process(_delta):
 	velocity = dir * 400
 	move_and_slide()
 	
+	look_at(get_global_mouse_position())
+	
 	if Input.is_action_pressed("action") and canLaser:
 		var laserMarkers:Array[Node] = $laserStartPositon.get_children()
 		var laser:Node = laserMarkers.pick_random()
-		laserAction.emit(laser.global_position)
+		var laserDir = (get_global_mouse_position() - position).normalized()
+		laserAction.emit(laser.global_position, laserDir)
 		canLaser = false
 		$Timer.start()
 #	print(DisplayServer.mouse_get_position())

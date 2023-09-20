@@ -1,6 +1,5 @@
 extends Node2D
 
-var screen:Vector2 = DisplayServer.window_get_size()
 var laserScene:PackedScene = preload("res://scenes/objects/laser.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +16,10 @@ func _on_gate_player_gate_enter():
 	print("enter from Level Scene")
 
 
-func _on_player_laser_action(playerPosition):
-	var laser:Node = laserScene.instantiate()
+func _on_player_laser_action(playerPosition, laserDirection):
+	var laser:Node = laserScene.instantiate() as Area2D
 	laser.position = playerPosition
-	add_child(laser)
+	laser.dir = laserDirection
+	print(laserDirection.angle())
+	laser.rotate(laserDirection.angle())
+	$projectiles.add_child(laser)
