@@ -7,13 +7,11 @@ var canLaser: bool = true
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var dir = Input.get_vector("left","right","up","down")
 	velocity = dir * 400
 	move_and_slide()
-	
 	look_at(get_global_mouse_position())
 	
 	if Input.is_action_pressed("action") and canLaser:
@@ -23,7 +21,6 @@ func _process(_delta):
 		laserAction.emit(laser.global_position, laserDir)
 		canLaser = false
 		$Timer.start()
-#	print(DisplayServer.mouse_get_position())
 
 
 func _on_timer_timeout():

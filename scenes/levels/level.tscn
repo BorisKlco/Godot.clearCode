@@ -1,11 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy1lerdb6ikne"]
+[gd_scene load_steps=6 format=3 uid="uid://cy1lerdb6ikne"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_obven"]
 [ext_resource type="PackedScene" uid="uid://dvjy67kd3h3gv" path="res://scenes/player/player.tscn" id="2_5285a"]
+[ext_resource type="Texture2D" uid="uid://dfjh4dqcm1anh" path="res://graphics/ground/stones.png" id="2_any4v"]
 [ext_resource type="PackedScene" uid="uid://de3j8b15l60oi" path="res://scenes/objects/gate.tscn" id="2_q8ldo"]
+[ext_resource type="Texture2D" uid="uid://d01l7n2y3vq8x" path="res://graphics/decals/dirt_patch.png" id="3_dl0r4"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_obven")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ground" type="Sprite2D" parent="Node2D"]
+texture_repeat = 2
+position = Vector2(536, 953)
+texture = ExtResource("2_any4v")
+region_enabled = true
+region_rect = Rect2(0, 0, 4800, 3000)
+
+[node name="dirt" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(1, 0.894118, 0.780392, 0.709804)
+position = Vector2(-136, 1139)
+scale = Vector2(0.515206, 0.515206)
+texture = ExtResource("3_dl0r4")
 
 [node name="gate" parent="." instance=ExtResource("2_q8ldo")]
 
@@ -13,6 +30,10 @@ script = ExtResource("1_obven")
 
 [node name="player" parent="." instance=ExtResource("2_5285a")]
 position = Vector2(962, 535)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
 
 [connection signal="playerGateEnter" from="gate" to="." method="_on_gate_player_gate_enter"]
 [connection signal="laserAction" from="player" to="." method="_on_player_laser_action"]

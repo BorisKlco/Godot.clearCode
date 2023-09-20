@@ -10,8 +10,6 @@ func _ready():
 func _process(_delta):
 	pass
 
-
-
 func _on_gate_player_gate_enter():
 	print("enter from Level Scene")
 
