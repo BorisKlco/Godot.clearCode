@@ -18,6 +18,5 @@ func _on_player_laser_action(playerPosition, laserDirection):
 	var laser:Node = laserScene.instantiate() as Area2D
 	laser.position = playerPosition
 	laser.dir = laserDirection
-	print(laserDirection.angle())
 	laser.rotate(laserDirection.angle())
 	$projectiles.add_child(laser)

@@ -10,7 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var dir = Input.get_vector("left","right","up","down")
-	velocity = dir * 400
+	velocity = dir * 1200
 	move_and_slide()
 	look_at(get_global_mouse_position())
 	

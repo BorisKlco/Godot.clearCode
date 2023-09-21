@@ -1,10 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy1lerdb6ikne"]
+[gd_scene load_steps=12 format=3 uid="uid://cy1lerdb6ikne"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_obven"]
 [ext_resource type="PackedScene" uid="uid://dvjy67kd3h3gv" path="res://scenes/player/player.tscn" id="2_5285a"]
 [ext_resource type="Texture2D" uid="uid://dfjh4dqcm1anh" path="res://graphics/ground/stones.png" id="2_any4v"]
 [ext_resource type="PackedScene" uid="uid://de3j8b15l60oi" path="res://scenes/objects/gate.tscn" id="2_q8ldo"]
 [ext_resource type="Texture2D" uid="uid://d01l7n2y3vq8x" path="res://graphics/decals/dirt_patch.png" id="3_dl0r4"]
+[ext_resource type="Texture2D" uid="uid://pmd4tmksiei7" path="res://graphics/tilesets/outside_walls.png" id="4_b02w2"]
+[ext_resource type="Texture2D" uid="uid://b3dowad2ln0qn" path="res://graphics/tilesets/soil.png" id="5_dqohk"]
+[ext_resource type="PackedScene" uid="uid://desm2lg2fkqwj" path="res://scenes/house.tscn" id="7_46c3k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to3k2"]
+resource_name = "walls"
+texture = ExtResource("4_b02w2")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1v6wd"]
+texture = ExtResource("5_dqohk")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mnaeo"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_to3k2")
+sources/1 = SubResource("TileSetAtlasSource_1v6wd")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_obven")
@@ -13,10 +49,10 @@ script = ExtResource("1_obven")
 
 [node name="ground" type="Sprite2D" parent="Node2D"]
 texture_repeat = 2
-position = Vector2(536, 953)
+position = Vector2(448, 2282)
 texture = ExtResource("2_any4v")
 region_enabled = true
-region_rect = Rect2(0, 0, 4800, 3000)
+region_rect = Rect2(0, 0, 12200, 7200)
 
 [node name="dirt" type="Sprite2D" parent="Node2D"]
 self_modulate = Color(1, 0.894118, 0.780392, 0.709804)
@@ -24,7 +60,24 @@ position = Vector2(-136, 1139)
 scale = Vector2(0.515206, 0.515206)
 texture = ExtResource("3_dl0r4")
 
+[node name="TileMap" type="TileMap" parent="Node2D"]
+tile_set = SubResource("TileSet_mnaeo")
+format = 2
+layer_0/name = "soil"
+layer_0/tile_data = PackedInt32Array(-4, 65537, 0, -5, 1, 0, 65531, 1, 1, 131067, 1, 2, 131068, 65537, 2, 131069, 131073, 2, 65533, 131073, 1, -3, 131073, 0, 65532, 65537, 1)
+layer_1/name = "walls"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(-3, 131072, 0, -4, 65536, 0, -5, 65536, 1, 65531, 0, 2, 131067, 0, 2, 327675, 0, 2, 393212, 65536, 0, 393213, 65536, 0, 393215, 65536, 0, 327680, 65536, 0, 393214, 65536, 0, 327681, 65536, 0, 327683, 65536, 0, 327682, 65536, 0, 327684, 65536, 0, 327685, 65536, 0, 262150, 0, 2, 196614, 0, 2, 131078, 0, 2, 65542, 0, 2, 6, 0, 2, -65530, 131072, 1, -65531, 0, 0, 327686, 131072, 2, 393211, 65536, 2)
+
 [node name="gate" parent="." instance=ExtResource("2_q8ldo")]
+
+[node name="house" parent="." instance=ExtResource("7_46c3k")]
+position = Vector2(-2840, 2325)
+rotation = -1.57429
 
 [node name="projectiles" type="Node2D" parent="."]
 
