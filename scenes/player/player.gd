@@ -20,6 +20,7 @@ func _process(_delta):
 		var laserDir = (get_global_mouse_position() - position).normalized()
 		laserAction.emit(laser.global_position, laserDir)
 		canLaser = false
+		$GPUParticles2D.emitting = true
 		$Timer.start()
 
 

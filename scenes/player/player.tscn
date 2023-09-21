@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvjy67kd3h3gv"]
+[gd_scene load_steps=6 format=3 uid="uid://dvjy67kd3h3gv"]
 
 [ext_resource type="Texture2D" uid="uid://bh54jc8unrl0x" path="res://graphics/player/player.png" id="1_6aj3h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_eoowu"]
+[ext_resource type="Texture2D" uid="uid://do8een2rntdn8" path="res://graphics/explosions/gun.png" id="2_4mlco"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5eq16"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+gravity = Vector3(10, 0, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j55kv"]
 radius = 51.0098
@@ -9,6 +21,15 @@ radius = 51.0098
 [node name="player" type="CharacterBody2D"]
 collision_mask = 31
 script = ExtResource("1_eoowu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(130, 22)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_5eq16")
+texture = ExtResource("2_4mlco")
+lifetime = 0.2
+one_shot = true
 
 [node name="playerChar" type="Sprite2D" parent="."]
 position = Vector2(40, 3)
